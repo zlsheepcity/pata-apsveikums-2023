@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- seed 2023.10.20 keiko -->
+
+    <title>Apsveikums 2023</title>
+    <meta name="description" content="Apsveikums">
+    <meta name="author"      content="PATA">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MICRODATA -->
+    <meta property="og:url"          content="https://zlsheepcity.github.io/pata-apsveikums-2023/">
+    <meta property="og:image"        content="https://zlsheepcity.github.io/pata-apsveikums-2023/art/chair-background-static.jpg">
+    <meta property="og:image:width"  content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:type"         content="article">
+    <meta property="og:locale"       content="lv_LV">
+
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ FAVICON -->
+    <meta name="theme-color"             content="#314159">
+    <meta name="msapplication-TileColor" content="#314159">
+    <meta name="msapplication-TileImage" content="art/icon512.png">
+    <link rel="icon" type="image/png"       href="art/icon512.png">
+    <link rel="apple-touch-icon"            href="art/icon512.png">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ JS LIBS -->
+    <script src="app/DateTime.js"></script>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ DESIGN -->
+    <link
+        href="app/css.11xBase.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.12xMarkup.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.13xTypography.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.14xColors.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.15xLayouts.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.16xTools.css"
+        type="text/css" rel="stylesheet" media="all">
+
+    <link
+        href="app/css.21xComponents.css"
+        type="text/css" rel="stylesheet" media="all">
+
+    <style>
+        @media all and (max-width:1200px) {
+            html { font-size: calc( 4px + 1vw ); }
+        }
+        [hidden] { display: none; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-image: linear-gradient(
+                0deg,
+                #BEC78F 10%,
+                #7F734B 40%,
+                #343434 95%
+            );
+        }
+
+        .layoutScreenLoading {
+            position: fixed;
+            z-index: -1;
+            top:    0;
+            left:   0;
+            width:  100%;
+            height: 100vh;
+            overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+        }
+        .layoutScreenLoading>* {
+            grid-area: 1/1 / 2/2;
+        }
+
+        .layoutScreenLoading {
+            transition: opacity 100ms ease-out;
+        }
+        .layoutScreenLoading.isHidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .layoutScreenLoading.isVisible {
+            opacity: 1;
+        }
+
+
+        .cardLoading {
+            width: max-content;
+            height: max-content;
+            max-width: calc( 100% - 2rem );
+
+                       color: hsla(0, 0%,  10%, 1.0);
+            background-color: hsla(0, 0%, 100%, 0.5);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+
+            display: grid;
+            place-items: center;
+
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight:  400;
+            font-size: 1.5rem;
+            line-height: 1.25;
+        }
+        .animated-pulse {
+          animation-duration: 1s;
+          animation-fill-mode: both;
+          animation-iteration-count: infinite;
+          animation-name: pulse;
+        }
+        @keyframes pulse {
+          from { transform: scale3d(1, 1, 1); }
+          50%  { transform: scale3d(1.05, 1.05, 1.05); }
+          to   { transform: scale3d(1, 1, 1); }
+        }
+
+        .cardGreetings {
+            width:   100%;
+            padding: 2rem 3rem;
+            max-width: 54rem;
+
+            display:  grid;
+            grid-gap: 2rem 3rem;
+            grid-template-columns: 540fr 320fr;
+            grid-template-areas:
+                'vids vids'
+                'head east'
+                'west east'
+                'west foot'
+                ;
+        }
+        .cardGreetings header {grid-area:head;}
+        .cardGreetings footer {grid-area:foot;}
+        .cardGreetings .video {grid-area:vids;}
+        .cardGreetings .cwest {grid-area:west;}
+        .cardGreetings .ceast {grid-area:east;}
+        .cardGreetings .quote+.quote {
+            padding-top: 2rem;
+        }
+        .cardGreetings .ceast {
+            align-self: center;
+            height: max-content;
+        }
+        @media all and (max-width:600px) {
+            .cardGreetings {
+                grid-template-areas:
+                    'head head'
+                    'vids vids'
+                    'west east'
+                    'west east'
+                    'foot foot'
+                    ;
+            }
+        }
+    </style>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
+</head>
+<body class="">
+
+    <section class="layoutScreenFixed" id="Grounds">
+        <video playsinline autoplay muted loop>
+            <source src="art/chair-background.webm" type="video/webm" />
+        </video>
+    </section>
+
+    <section class="layoutScreenLoading" id="SectionLoading">
+        <div class="cardLoading animated-pulse">
+            <span>Notiek ielāde...</span>
+        </div>
+    </section>
+
+    <section class="layoutScreenContent isHidden" id="SectionContent">
+        <article class="cardGreetings wrapContentTypography">
+            <section class="video">
+                <iframe style="width: 100%;aspect-ratio: 560/315;" data-width="560" data-height="315" src="https://www.youtube-nocookie.com/embed/VgfAqc6dkmg?si=R2GKIiJzainACcyX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </section>
+            <header>
+                <h2>
+                    Enerģijas avots. Atomreaktors.
+                </h2>
+            </header>
+            <footer>
+                <h2>
+                    Nebaidīties kļūdīties.
+                </h2>
+            </footer>
+            <section class="cwest">
+                <div class="quote">
+                    <h4>Tik liela iedziļināšanās savā darbā.</h4>
+                    <p>Vairāk nekā tikai darbs vai bizness.</p>
+                </div>
+                <div class="quote">
+                    <p>Bez rakstura stingrības izaugsme nav iespējama. Ar&nbsp;tādu attieksmi, kā darītu priekš sevis.</p>
+                    <h4>Tik rūpīgi un atbildīgi.</h4>
+                </div>
+            </section>
+            <section class="ceast">
+                <div class="quote">
+                    <h4>Vilcējspēks.</h4>
+                    <p>Nav jādomā simts iemesli, kāpēc nedarīt, bet gan kā izdarīt un pēc iespējas labāk.</p>
+                </div>
+                <div class="quote">
+                    <p>Nepārtraukta attīstība.</p>
+                    <h4>Tā, lai katru dienu ir interesanti!</h4>
+                </div>
+            </section>
+        </article>
+    </section>
+
+    <section class="layoutScreenTimer isHidden" id="SectionTimer">
+        <div class="componentTimer">
+            <h1>Līdz apsveikuma atvēršanai:</h1>
+            <div class="componentTimeline">
+                <div class="boxDigit" id="TimeDigitH1">0</div>
+                <div class="boxDigit" id="TimeDigitH2">0</div>
+                <div class="sperator" >:</div>
+                <div class="boxDigit" id="TimeDigitM1">0</div>
+                <div class="boxDigit" id="TimeDigitM2">0</div>
+                <div class="sperator" >:</div>
+                <div class="boxDigit" id="TimeDigitS1">0</div>
+                <div class="boxDigit" id="TimeDigitS2">0</div>
+                <div class="boxDigitTitle" style="grid-column: 1/3">
+                    STUNDAS
+                </div>
+                <div class="boxDigitTitle" style="grid-column: 4/6">
+                    MINŪTES
+                </div>
+                <div class="boxDigitTitle" style="grid-column: 7/9">
+                    SEKUNDES
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ JS -->
+    <script>
+        const dateTargetString = "2023-11-05T00:00:00+08:00";
+//        const dateTargetString = "2022-11-05T00:00:00+08:00";
+        const dateTarget = new DateTime(dateTargetString);
+        const timerDigitsDOM = [
+            document.getElementById('TimeDigitH1'),
+            document.getElementById('TimeDigitH2'),
+            document.getElementById('TimeDigitM1'),
+            document.getElementById('TimeDigitM2'),
+            document.getElementById('TimeDigitS1'),
+            document.getElementById('TimeDigitS2'),
+        ];
+        const renderContent = f => {
+            const elC = document.getElementById('SectionContent');
+            const elT = document.getElementById('SectionTimer');
+            const elG = document.getElementById('Grounds');
+            elT.classList.remove('isVisible');
+            elT.classList.add('isHidden');
+            elG.classList.remove('isVisible');
+            elG.classList.add('isHidden');
+            elC.classList.remove('isHidden');
+            elC.classList.add('isVisible');
+        };
+
+        const renderDigs = digs => {
+            digs.forEach(
+                (d,i) => {
+                    timerDigitsDOM[i].innerText = d;
+                }
+            );
+        };
+        function secondsToDigs(d) {
+            d = Number(d);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+            return [
+                Math.floor( (h%100) / 10),
+                h % 10,
+                Math.floor( m / 10),
+                m % 10,
+                Math.floor( s / 10),
+                s % 10,
+            ];
+        };
+        const runTimer = f => {
+            const dateNow = new DateTime();
+            const {seconds} = dateTarget.differenceFrom(dateNow);
+            if (seconds>0) {
+                const digs = secondsToDigs(seconds);
+                renderDigs(digs);
+                setTimeout(runTimer, 1000);
+            } else {
+                setTimeout(renderContent, 200);
+            }
+        };
+
+        const renderTimer = f => {
+            const elL = document.getElementById('SectionLoading');
+            const elT = document.getElementById('SectionTimer');
+            elL.classList.remove('isVisible');
+            elL.classList.add('isHidden');
+            elT.classList.remove('isHidden');
+            elT.classList.add('isVisible');
+            runTimer();
+        }
+
+        // RUN
+        window.onload = function() {
+            setTimeout(renderTimer, 100);
+        };
+
+    </script>
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END -->
+</body>
+</html>
