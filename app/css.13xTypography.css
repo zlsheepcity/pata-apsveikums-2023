@@ -57,9 +57,11 @@ body {
       --font-weight:             400;
     }
 
+/*  Disable
     @supports (hanging-punctuation: first) {
            * { hanging-punctuation: first; }
     }
+*/
 
     /* Font Features Inspector: wakamaifondue.com */
 

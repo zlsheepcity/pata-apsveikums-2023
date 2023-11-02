@@ -151,20 +151,30 @@
             line-height: 1.25;
         }
         .wrapContentTypography h2 {
-            font-size:  3.75rem;
+            font-size:  3.0rem;
             font-weight: 700;
         }
 
         /*quotes*/
 
-        .wrapContentTypography h2:before {
-            content: '“';
+        .wrapContentTypography h2 .quote-start {
             position: absolute;
             transform: translateX(-100%);
+            pointer-events: none;
+        }
+
+        .wrapContentTypography h2:before {
+          --content: '“';
+          --position: absolute;
+          --transform: translateX(-100%);
+          --pointer-events: none;
         }
         .wrapContentTypography h2:after {
-            content: '”';
-            position: absolute;
+          --content: '”';
+          --display: inline-block;
+        }
+        .wrapContentTypography h2>span {
+          --display: inline-block;
         }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ content components */
