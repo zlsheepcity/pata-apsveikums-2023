@@ -147,11 +147,11 @@
                 'west foot'
                 ;
         }
-        .cardGreetings header {grid-area:head;}
-        .cardGreetings footer {grid-area:foot;}
-        .cardGreetings .video {grid-area:vids;}
-        .cardGreetings .cwest {grid-area:west;}
-        .cardGreetings .ceast {grid-area:east;}
+        .cardGreetings >header {grid-area:head;}
+        .cardGreetings >footer {grid-area:foot;}
+        .cardGreetings >.video {grid-area:vids;}
+        .cardGreetings >.cwest {grid-area:west;}
+        .cardGreetings >.ceast {grid-area:east;}
         .cardGreetings .quote+.quote {
             padding-top: 2rem;
         }
@@ -280,8 +280,8 @@
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ JS -->
     <script>
-//        const dateTargetString = "2023-11-05T00:00:00+08:00";
-        const dateTargetString = "2022-11-05T00:00:00+08:00";
+        const dateTargetString = "2023-11-05T00:00:00+08:00";
+//        const dateTargetString = "2022-11-05T00:00:00+08:00";
         const dateTarget = new DateTime(dateTargetString);
         const timerDigitsDOM = [
             document.getElementById('TimeDigitH1'),
